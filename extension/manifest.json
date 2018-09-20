@@ -15,12 +15,12 @@
 	"content_scripts": [{
 		"run_at": "document_end",
 		"all_frames": false,
-			"matches": ["https://checkio.org/*", "https://*.checkio.org/*"],
-			"js": ["content.js"]
+		"matches": ["https://checkio.org/*", "https://*.checkio.org/*"],
+		"js": ["content.js"]
 	}],
 	"permissions": [
 		"tabs",
-		"https://checkio.org/mission/*/solve/",
+		"https://*.checkio.org/mission/*/solve/",
 		"management",
 		"nativeMessaging"
   	],
