@@ -7,14 +7,20 @@
 	var extId = "mlglngjgefkbflbmelghfeijmojocnbi";
 	var runtimeCallBacks = [];
 
+	var lastTimeFail = 0;
+	var lastError = undefined;
+
 	connect();
-	window.sendNativeMessage = sendNativeMessage;
+	connect_runtime();
+
 	function connect() {
 		console.log("Connecting to native messaging host <b>" + hostName + "</b>")
 		port = mc_browser.runtime.connectNative(hostName);
 		port.onMessage.addListener(onNativeMessage);
 		port.onDisconnect.addListener(onDisconnected);
+	}
 
+	function connect_runtime() {
 		mc_browser.runtime.connect(extId);
 		mc_browser.runtime.onMessage.addListener(onRuntimeMessage);
 	}
@@ -31,8 +37,17 @@
 
 	function onRuntimeMessage(message, sender, callback) {
 		console.log("Received Runtime message: " + JSON.stringify(message));
-		sendNativeMessage(message);
-		runtimeCallBacks.push(callback);
+		if (port) {
+			sendNativeMessage(message);
+			runtimeCallBacks.push(callback);
+		} else {
+			callback({
+				'do': 'error',
+				'type': 'PluginBackPort',
+				'text': lastError
+			})
+		}
+		
 		return true;
 	}
 
@@ -43,7 +58,14 @@
 
 	function onDisconnected() {
 		console.log("Failed to connect: " + mc_browser.runtime.lastError.message);
-		port = null;
+		lastError = mc_browser.runtime.lastError.message;
+		var currentTime = new Date().getTime();
+		if (currentTime - lastTimeFail > 1000) {
+			console.log('Reconnect ' + (currentTime - lastTimeFail));
+			lastTimeFail = currentTime;
+			connect();
+		}
+		port = undefined;
 	}
 
 })()
