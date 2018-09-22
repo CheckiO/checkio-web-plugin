@@ -1,4 +1,6 @@
 (function () {
+	var isChrome = (/google/i).test(navigator.vendor),
+		mc_browser = isChrome ? chrome : browser;
 
 	var port = null;
 	var hostName = "com.google.chrome.checkio.client";
@@ -9,12 +11,12 @@
 	window.sendNativeMessage = sendNativeMessage;
 	function connect() {
 		console.log("Connecting to native messaging host <b>" + hostName + "</b>")
-		port = chrome.runtime.connectNative(hostName);
+		port = mc_browser.runtime.connectNative(hostName);
 		port.onMessage.addListener(onNativeMessage);
 		port.onDisconnect.addListener(onDisconnected);
 
-		chrome.runtime.connect(extId);
-		chrome.runtime.onMessage.addListener(onRuntimeMessage);
+		mc_browser.runtime.connect(extId);
+		mc_browser.runtime.onMessage.addListener(onRuntimeMessage);
 	}
 
 	function sendNativeMessage(message) {
@@ -37,11 +39,10 @@
 	function sendRuntimeMessage(message) {
 		console.log("Sent Runtime message: " + JSON.stringify(message));
 		runtimeCallBacks.shift()(message);
-		//chrome.runtime.sendMessage(message);
 	}
 
 	function onDisconnected() {
-		console.log("Failed to connect: " + chrome.runtime.lastError.message);
+		console.log("Failed to connect: " + mc_browser.runtime.lastError.message);
 		port = null;
 	}
 

@@ -1,8 +1,13 @@
 (function (_window) {
-	chrome.runtime.connect('mlglngjgefkbflbmelghfeijmojocnbi')
+	console.log('WOW!!!')
+	var isChrome = (/google/i).test(navigator.vendor),
+		mc_browser = isChrome ? chrome : browser;
+
+	mc_browser.runtime.connect('mlglngjgefkbflbmelghfeijmojocnbi')
 
 	function sendRuntimeMessage(message){
-		chrome.runtime.sendMessage(message, function(response){
+		console.log("Send Runtime Message: " + JSON.stringify(message));
+		mc_browser.runtime.sendMessage(message, function(response){
 			sendEventMessage(response);
 		});
 	}
