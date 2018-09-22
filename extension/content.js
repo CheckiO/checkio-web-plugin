@@ -1,5 +1,4 @@
 (function (_window) {
-	console.log('WOW!!!')
 	var isChrome = (/google/i).test(navigator.vendor),
 		mc_browser = isChrome ? chrome : browser;
 
