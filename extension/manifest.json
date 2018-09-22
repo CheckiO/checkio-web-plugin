@@ -20,7 +20,7 @@
 	}],
 	"permissions": [
 		"tabs",
-		"https://*",
+		"https://*.checkio.org/mission/*/solve/",
 		"management",
 		"nativeMessaging"
   	],
