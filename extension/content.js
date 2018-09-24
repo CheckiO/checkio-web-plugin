@@ -20,7 +20,9 @@
 	function sendEventMessage(message) {
 		console.log('Send Event Message:' + JSON.stringify(message));
 		var event = document.createEvent('CustomEvent');
-		event.initCustomEvent('plugin:sendMessage', true, true, message);
+		event.initCustomEvent('plugin:sendMessage', true, true, JSON.stringify({
+			'data':message
+		}));
 		_window.dispatchEvent(event);
 	}
 
