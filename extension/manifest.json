@@ -2,7 +2,7 @@
 	"manifest_version": 2,
 	"name": "CheckiO",
 	"key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDHYhET96uR9siwDS75+IwHxcIw7EYx5uLte4sKqU7dzIAxvC6C8N1WQoHGXwpLlzeKdntZg+Jkrq7da/QfJABF+X4Hwj78tmFvk09H0Z1KpoxVqk5bq5RTdH6qe7uDrmEMY0wae7fEfSKAfB5pQpO8JZhc2myIpktrHxgIT5WVcwIDAQAB",
-	"version": "1.1.9.2",
+	"version": "1.2.1",
 	"description": "CheckiO is the game for coders https://checkio.org/",
 	"homepage_url": "https://checkio.org",
 	"background" : {
