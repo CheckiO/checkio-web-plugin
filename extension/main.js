@@ -4,7 +4,6 @@
 
 	var port = null;
 	var hostName = "com.google.chrome.checkio.client";
-	hostName = "checkio_app";
 	var extId = "mlglngjgefkbflbmelghfeijmojocnbi";
 	var runtimeCallBacks = [];
 
