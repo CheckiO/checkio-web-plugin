@@ -3,7 +3,7 @@
 		mc_browser = isChrome ? chrome : browser;
 
 	var port = null;
-	var hostName = "com.google.chrome.checkio.client";
+	var hostName = "com.checkio.client";
 	var extId = "mlglngjgefkbflbmelghfeijmojocnbi";
 	var runtimeCallBacks = [];
 
