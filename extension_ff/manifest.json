@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 	"name": "CheckiO",
-	"version": "1.2.2",
+	"version": "1.2.3",
 	"description": "CheckiO is the game for coders https://checkio.org/",
 	"homepage_url": "https://checkio.org",
 	"background" : {
@@ -28,9 +28,6 @@
   	"icons": {
 		"16": "icon16.png",
 		"128": "icon128.png"
-	},
-	"chrome_url_overrides" : {
-		"newtab": "newtab.html"
 	},
 	"applications": {
 	    "gecko": {
