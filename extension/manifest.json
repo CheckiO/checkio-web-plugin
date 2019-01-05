@@ -18,7 +18,10 @@
 			"https://*.checkio.org/*",
 			"https://checkio.org/*",
 			"https://*.empireofcode.com/*",
-			"https://empireofcode.com/*"
+			"https://empireofcode.com/*",
+			"http://192.168.56.2:8000/*",
+			"http://localhost/*",
+			"http://localhost:3000/*"
 		],
 		"js": ["content.js"]
 	}],
